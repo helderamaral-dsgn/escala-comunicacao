@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Comunicacao IP Jardim//Escalas//PT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:2026-12-31-stories_evento-julia@escalas.ipjardim
+DTSTAMP:20261121T192416Z
+DTSTART:20270101T000000Z
+DTEND:20270101T025900Z
+SUMMARY:Cobertura de Stories - Réveillon
+DESCRIPTION:Escala do Departamento de Comunicação - Julia. Não pode servir? Combine uma troca com alguém da sua frente.
+LOCATION:Igreja Presbiteriana do Jardim - Av. Dom. Assis Chateaubriand\, 1322 - Liberdade\, Campina Grande - PB\, 58414-060
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lembrete da escala
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lembrete da escala
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
