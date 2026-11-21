@@ -2,7 +2,8 @@
   'use strict';
   var E = window.ESCALA;
   var SEMANA = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB'];
-  var SEMANA_LONGA = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+  var SEMANA_MES = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+  var SEMANA_LONGA =['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
   var $ = function (id) { return document.getElementById(id); };
   var pad = function (n) { return (n < 10 ? '0' : '') + n; };
   var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
@@ -85,7 +86,7 @@
     var classe = 'pill ' + t.cor + (aberto ? ' aberto' : '') + (nome && t.nome === nome ? ' eu' : '') + (t.arquivo ? ' clicavel' : '');
     var dados = t.arquivo ? ' data-t="' + esc(JSON.stringify(t)) + '"' : '';
     var tag = t.arquivo ? 'button type="button"' : 'span';
-    return '<' + tag + ' class="' + classe + '"' + dados + '><span class="tag">' + esc(t.rotulo) + '</span>' + nomeHtml +
+    return '<' + tag + ' class="' + classe + '"' + dados + '><span class="tag"><span class="tl">' + esc(t.rotulo) + '</span><span class="tc">' + esc(t.rotulo.split(' · ').pop()) + '</span></span>' + nomeHtml +
       (t.arquivo ? '<span class="add" aria-hidden="true">＋</span>' : '') + '</' + tag.split(' ')[0] + '>';
   }
 
@@ -133,6 +134,42 @@
     if (nome) E.meses[idx] && Object.keys(m.dias).forEach(function (d) { m.dias[d].turnos.forEach(function (t) { if (t.nome === nome) meus++; }); });
     $('resumo').textContent = nome ? (meus ? nomeCompleto(nome).split(' ')[0] + ', você serve ' + meus + (meus === 1 ? ' vez' : ' vezes') + ' em ' + m.nomeMes.toLowerCase() + '. 💚' : '') : '';
     ligarPills($('lista'));
+    progresso(m);
+  }
+
+  // progresso do mês: serviços já realizados / total (ou só os da pessoa escolhida)
+  function progresso(m) {
+    var total = 0, feitos = 0;
+    Object.keys(m.dias).forEach(function (d) {
+      var passou = chaveDe(m, +d) < hojeChave;
+      m.dias[d].turnos.forEach(function (t) {
+        if (nome && t.nome !== nome) return;
+        total++; if (passou) feitos++;
+      });
+    });
+    var pct = total ? Math.round(feitos / total * 100) : 0;
+    $('progresso').innerHTML = total ? '<span class="bolha" title="' + pct + '% do mês concluído">' + pct + '%</span>' : '';
+    $('prog-txt').innerHTML = total ? '<b>' + pct + '%</b> ' + (nome ? 'dos seus serviços' : 'do mês') + ' concluído · ' + feitos + ' de ' + total + ' serviços' : '';
+    $('prog-resumo').hidden = !total;
+    // a barra lateral enche até a primeira data que ainda não aconteceu
+    var wrap = $('lista-wrap'), linhas = wrap.querySelectorAll('.linha'), alvo = 0;
+    if (linhas.length) {
+      var futura = Array.prototype.find.call(linhas, function (l) { return !l.classList.contains('passado'); });
+      alvo = futura ? futura.offsetTop - 6 : wrap.offsetHeight;
+      if (futura && futura === linhas[0]) alvo = 0;
+    }
+    var fill = $('trilho-fill'), barra = $('prog-barra-fill');
+    fill.style.height = '0px'; barra.style.width = '0%';
+    requestAnimationFrame(function () { requestAnimationFrame(function () {
+      fill.style.height = Math.max(0, alvo) + 'px'; barra.style.width = pct + '%';
+    }); });
+  }
+
+  function dataBonita(texto) {
+    var p = texto.split(' - '), d = p[0].split('.');
+    var rest = p.slice(1).join(' - ').toLowerCase().replace(/(^|\s)(\S)/g, function (a, s, c) { return s + c.toUpperCase(); })
+      .replace(/\b(Do|Da|De|Dos|Das|No|Na|E)\b/g, function (w) { return w.toLowerCase(); });
+    return { dia: d[0], mes: d[1], texto: rest };
   }
 
   function render(animar) {
@@ -140,8 +177,13 @@
     $('titulo-mes').textContent = m.nomeMes;
     $('titulo-ano').textContent = m.ano;
     abas(); proximo(); mini(m); lista(m);
-    $('datas').innerHTML = m.rodape.map(function (r) { return '<li class="' + (r.destaque ? 'dest' : '') + '">' + esc(r.texto) + '</li>'; }).join('');
-    var pdf = $('btn-pdf'); pdf.href = m.pdf; pdf.textContent = 'Baixar PDF de ' + m.nomeMes.toLowerCase();
+    $('datas').innerHTML = m.rodape.map(function (r) {
+      var b = dataBonita(r.texto);
+      var tipo = r.destaque ? 'Evento' : (/anivers/i.test(r.texto) ? 'Aniversário' : 'Data');
+      return '<li class="' + (r.destaque ? 'dest' : '') + '"><span class="dt"><b>' + esc(b.dia) + '</b><small>' + esc(SEMANA_MES[+b.mes - 1]) + '</small></span>' +
+        '<span class="dtx"><small>' + (r.destaque ? '★ ' : '') + tipo + '</small>' + esc(b.texto.replace(/^Aniversário\s+/i, '')) + '</span></li>';
+    }).join('');
+    var pdf = $('btn-pdf'); pdf.href = m.pdf; $('btn-pdf-txt').textContent = 'Baixar PDF de ' + m.nomeMes.toLowerCase();
     if (animar) { var mes = $('mes'); mes.classList.remove('troca'); void mes.offsetWidth; mes.classList.add('troca'); }
     observar();
   }
@@ -184,4 +226,5 @@
 
   render(false);
   document.body.classList.add('pronto');
+  var tm; window.addEventListener('resize', function () { clearTimeout(tm); tm = setTimeout(function () { progresso(E.meses[idx]); }, 200); });
 })();

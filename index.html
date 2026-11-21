@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Escala da Comunicação · Novembro e Dezembro 2026">
 <meta property="og:description" content="Escala do Departamento de Comunicação da IP Jardim: Novembro e Dezembro 2026. Toque no seu nome para salvar o lembrete na agenda.">
-<meta property="og:image" content="https://helderamaral-dsgn.github.io/escala-comunicacao/img/capa.png?v=mwqtbdom">
+<meta property="og:image" content="https://helderamaral-dsgn.github.io/escala-comunicacao/img/capa.png?v=mwqthrik">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://helderamaral-dsgn.github.io/escala-comunicacao/">
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@800&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilo.css?v=mwqtbdom">
+<link rel="stylesheet" href="estilo.css?v=mwqthrik">
 </head>
 <body>
 <header class="hero">
@@ -48,9 +48,20 @@
   </div>
   <div class="mini-wrap"><div class="mini" id="mini"></div></div>
   <h2 class="titulo-lista">Detalhes do mês <small>toque no nome para salvar na agenda</small></h2>
-  <div class="lista" id="lista"></div>
-  <ul class="datas" id="datas"></ul>
-  <a class="btn-pdf" id="btn-pdf" href="#" download>Baixar PDF do mês</a>
+  <div class="prog-resumo" id="prog-resumo"><div class="prog-barra"><span id="prog-barra-fill"></span></div><span id="prog-txt"></span></div>
+  <div class="lista-wrap" id="lista-wrap">
+    <div class="trilho" aria-hidden="true"><div class="trilho-fill" id="trilho-fill"></div></div>
+    <div class="progresso" id="progresso"></div>
+    <div class="lista" id="lista"></div>
+  </div>
+  <section class="card-datas anima">
+    <span class="datas-rot">Datas importantes</span>
+    <ul class="datas" id="datas"></ul>
+    <a class="btn-pdf" id="btn-pdf" href="#" download>
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+      <span id="btn-pdf-txt">Baixar PDF do mês</span>
+    </a>
+  </section>
 </main>
 
 <footer class="rodape">
@@ -82,7 +93,7 @@
   <button class="sheet-fechar" id="sheet-fechar" type="button">Fechar</button>
 </div>
 
-<script src="dados.js?v=mwqtbdom"></script>
-<script src="app.js?v=mwqtbdom"></script>
+<script src="dados.js?v=mwqthrik"></script>
+<script src="app.js?v=mwqthrik"></script>
 </body>
 </html>
