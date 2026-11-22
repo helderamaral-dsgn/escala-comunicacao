@@ -4,12 +4,12 @@ PRODID:-//Comunicacao IP Jardim//Escalas//PT
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:2026-11-22-video-jean@escalas.ipjardim
-DTSTAMP:20261122T194429Z
-DTSTART:20261122T210000Z
-DTEND:20261122T233000Z
-SUMMARY:Vídeo - Batismo Infantil
-DESCRIPTION:Escala do Departamento de Comunicação - Jean. Não pode servir? Combine uma troca com alguém da sua frente.
+UID:2026-11-02-cortes-bia@escalas.ipjardim
+DTSTAMP:20261122T195059Z
+DTSTART:20261102T120000Z
+DTEND:20261102T130000Z
+SUMMARY:Postagem - Corte de Pregação
+DESCRIPTION:Escala do Departamento de Comunicação - Bia. Não pode servir? Combine uma troca com alguém da sua frente.
 LOCATION:Igreja Presbiteriana do Jardim - Av. Dom. Assis Chateaubriand\, 1322 - Liberdade\, Campina Grande - PB\, 58414-060
 BEGIN:VALARM
 ACTION:DISPLAY
