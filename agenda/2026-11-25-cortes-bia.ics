@@ -1,0 +1,25 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Comunicacao IP Jardim//Escalas//PT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:2026-11-25-cortes-bia@escalas.ipjardim
+DTSTAMP:20261122T194429Z
+DTSTART:20261125T120000Z
+DTEND:20261125T130000Z
+SUMMARY:Postagem - Corte de Pregação
+DESCRIPTION:Escala do Departamento de Comunicação - Bia. Não pode servir? Combine uma troca com alguém da sua frente.
+LOCATION:Igreja Presbiteriana do Jardim - Av. Dom. Assis Chateaubriand\, 1322 - Liberdade\, Campina Grande - PB\, 58414-060
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lembrete da escala
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Lembrete da escala
+TRIGGER:-PT1H
+END:VALARM
+END:VEVENT
+END:VCALENDAR
