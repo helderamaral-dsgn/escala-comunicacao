@@ -78,8 +78,9 @@ a.mc-cel:active { transform: scale(.96); }
 .mc-cel.passado { opacity: .45; }
 .mc-cel.apagado { opacity: .25; }
 .mc-cel.meu { box-shadow: 0 0 0 2.5px var(--amarelo); }
-.mc-cel.hoje::after { content: 'HOJE'; position: absolute; bottom: 2px; right: 3px; font-size: 7px; font-weight: 700; color: var(--verde); }
-.mc-cel.dom.hoje::after { color: #fff; }
+/* dia de hoje: número dentro de um selo amarelo (não cobre os nomes) */
+.mc-cel.hoje .mc-num { background: var(--amarelo); color: #111; border-radius: 6px; padding: 1px 4px; }
+.mc-cel.hoje { box-shadow: inset 0 0 0 2px var(--amarelo); }
 .mc-num { font-family: 'Bitter', serif; font-weight: 800; font-size: 14px; color: var(--verde-esc); line-height: 1; padding-left: 2px; }
 .mc-cel.dom .mc-num { color: #fff; }
 .mc-cel.fora .mc-num { color: #c4d3ce; }
@@ -139,11 +140,15 @@ a.mc-cel:active { transform: scale(.96); }
 .anima.visivel { opacity: 1; transform: none; }
 .linha.passado.visivel { opacity: .5; }
 
-/* progresso do mês */
-.prog-resumo { display: flex; align-items: center; gap: 10px; margin: 0 4px 14px; font-size: 12px; color: #4a5a55; }
+/* cabeçalho dos detalhes + progresso do mês */
+.card-detalhes { margin: 24px 0 16px; background: #fff; border-radius: 22px; padding: 18px 16px 16px; box-shadow: 0 4px 14px rgba(15,74,66,.06); }
+.detalhes-rot { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #fff; background: var(--verde); padding: 6px 12px; border-radius: 999px; }
+.detalhes-dica { font-size: 13px; line-height: 1.45; color: #4a5a55; margin: 10px 0 14px; }
+.prog-resumo { background: #f4f7f5; border-radius: 14px; padding: 12px 14px; }
 .prog-resumo[hidden] { display: none; }
-.prog-resumo b { color: var(--verde-esc); }
-.prog-barra { flex: none; width: 70px; height: 6px; border-radius: 3px; background: #dbe6e2; overflow: hidden; }
+.prog-topo { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 8px; font-size: 13px; font-weight: 500; color: #3c4b47; }
+.prog-topo b { font-family: 'Bitter', serif; font-weight: 800; font-size: 22px; color: var(--verde-esc); line-height: 1; }
+.prog-barra { height: 8px; border-radius: 4px; background: #dbe6e2; overflow: hidden; }
 .prog-barra span { display: block; height: 100%; width: 0; background: var(--verde); border-radius: 3px; transition: width 1.2s ease; }
 .lista-wrap { position: relative; padding-left: 30px; }
 .trilho { position: absolute; left: 10px; top: 8px; bottom: 8px; width: 5px; border-radius: 3px; background: #dbe6e2; overflow: hidden; }
@@ -184,7 +189,7 @@ a.mc-cel:active { transform: scale(.96); }
 .card-missao p { font-family: 'Bitter', serif; font-weight: 800; font-size: 20px; line-height: 1.35; margin: 14px 0 14px; position: relative; }
 .card-missao em { font-style: normal; color: #9fe8c8; }
 .missao-bencao { font-size: 14px; font-weight: 500; opacity: .9; position: relative; }
-.assinatura { text-align: center; font-size: 11px; color: #7a8a85; letter-spacing: .5px; margin-top: 6px; }
+.assinatura { text-align: center; font-size: 12px; line-height: 1.6; color: #7a8a85; letter-spacing: .5px; margin-top: 8px; }
 
 /* foto da pessoa dentro do nome */
 .av { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; flex: none; margin-right: -2px; box-shadow: 0 0 0 2px #fff; transform: scale(1); }

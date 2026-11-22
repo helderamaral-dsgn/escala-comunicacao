@@ -149,7 +149,8 @@
     });
     var pct = total ? Math.round(feitos / total * 100) : 0;
     $('progresso').innerHTML = total ? '<span class="bolha" title="' + pct + '% do mês concluído">' + pct + '%</span>' : '';
-    $('prog-txt').innerHTML = total ? '<b>' + pct + '%</b> ' + (nome ? 'dos seus serviços' : 'do mês') + ' concluído · ' + feitos + ' de ' + total + ' serviços' : '';
+    $('prog-txt').textContent = total ? (nome ? 'Seus serviços concluídos' : 'Mês concluído') + ' · ' + feitos + ' de ' + total : '';
+    $('prog-pct').textContent = total ? pct + '%' : '';
     $('prog-resumo').hidden = !total;
     // a barra lateral enche até a primeira data que ainda não aconteceu
     var wrap = $('lista-wrap'), linhas = wrap.querySelectorAll('.linha'), alvo = 0;
