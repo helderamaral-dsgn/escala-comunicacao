@@ -64,7 +64,7 @@ main.troca { animation: troca .45s ease; }
 .lg { font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; color: #3c4b47; }
 .lg::before { content: ''; width: 10px; height: 10px; border-radius: 50%; }
 .lg.azul::before { background: var(--azul); } .lg.laranja::before { background: var(--laranja); } .lg.vermelho::before { background: var(--vermelho); }
-.lg.rosa::before { background: var(--rosa); } .lg.roxo::before { background: var(--roxo); } .lg.preto::before { background: #111; }
+.lg.rosa::before { background: var(--rosa); } .lg.roxo::before { background: var(--roxo); } .lg.preto::before { background: #111; } .lg.ciano::before { background: #0aa5c0; }
 
 /* mini calendário */
 .mini-wrap { background: #fff; border-radius: 22px; padding: 10px; box-shadow: 0 6px 20px rgba(15,74,66,.08); }
@@ -89,6 +89,7 @@ a.mc-cel:active { transform: scale(.96); }
 .mc-chip { color: #fff; font-size: 7.5px; font-weight: 600; line-height: 1.35; padding: 0 2px; border-radius: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
 .mc-chip.azul { background: var(--azul); } .mc-chip.laranja { background: var(--laranja); } .mc-chip.vermelho { background: var(--vermelho); }
 .mc-chip.rosa { background: var(--rosa); } .mc-chip.roxo { background: var(--roxo); } .mc-chip.preto { background: #111; }
+.mc-chip.ciano { background: #0aa5c0; }
 .mc-cel.dom .mc-chip.preto { background: #0a2e29; }
 .mc-chip.aberto { opacity: .55; }
 .mc-chip.eu { outline: 1.5px solid var(--amarelo); }
@@ -128,6 +129,7 @@ a.mc-cel:active { transform: scale(.96); }
 .pill.vermelho { background: #fbe7ec; padding-right: 4px; } .pill.vermelho .tag { background: var(--vermelho); }
 .pill.rosa { background: #fde6f3; } .pill.rosa .tag { background: var(--rosa); }
 .pill.roxo { background: #f3e6fb; } .pill.roxo .tag { background: var(--roxo); }
+.pill.ciano { background: #dff6fb; } .pill.ciano .tag { background: #0aa5c0; }
 .pill.preto { background: #ececec; } .pill.preto .tag { background: #111; }
 .pill.aberto b { color: #888; font-weight: 400; font-style: italic; }
 .linha.dom .pill { background: rgba(255,255,255,.14); color: #fff; }

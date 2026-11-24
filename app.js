@@ -86,7 +86,7 @@
     var classe = 'pill ' + t.cor + (aberto ? ' aberto' : '') + (nome && t.nome === nome ? ' eu' : '') + (t.arquivo ? ' clicavel' : '');
     var dados = t.arquivo ? ' data-t="' + esc(JSON.stringify(t)) + '"' : '';
     var tag = t.arquivo ? 'button type="button"' : 'span';
-    return '<' + tag + ' class="' + classe + '"' + dados + '><span class="tag"><span class="tl">' + esc(t.rotulo) + '</span><span class="tc">' + esc(t.rotulo.split(' · ').pop()) + '</span></span>' + nomeHtml +
+    return '<' + tag + ' class="' + classe + '"' + dados + '><span class="tag"><span class="tl">' + esc(t.rotulo) + '</span><span class="tc">' + esc(t.rotuloCurto || t.rotulo.split(' · ').pop()) + '</span></span>' + nomeHtml +
       (t.arquivo ? '<span class="add" aria-hidden="true">＋</span>' : '') + '</' + tag.split(' ')[0] + '>';
   }
 
