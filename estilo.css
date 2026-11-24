@@ -182,6 +182,31 @@ a.mc-cel:active { transform: scale(.96); }
 .troca-ic { flex: none; width: 44px; height: 44px; border-radius: 14px; background: #ffece6; color: var(--laranja); display: flex; align-items: center; justify-content: center; }
 .card-troca strong { display: block; font-size: 15px; color: var(--verde-esc); margin-bottom: 3px; }
 .card-troca p { font-size: 13px; line-height: 1.5; color: #4a5a55; }
+.card-troca { cursor: pointer; transition: transform .15s, box-shadow .2s; -webkit-tap-highlight-color: transparent; }
+.card-troca:active { transform: scale(.98); }
+.card-troca:focus-visible { outline: 3px solid var(--laranja); outline-offset: 2px; }
+.card-troca { flex-direction: column; gap: 14px; }
+.troca-topo { display: flex; gap: 14px; align-items: flex-start; }
+.troca-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--verde); color: #fff; border-radius: 14px; padding: 13px; font-weight: 600; }
+.troca-btn-ic { display: flex; flex: none; }
+.card-troca:active .troca-btn { transform: scale(.98); }
+
+/* painel: relação de frentes */
+.sheet-frentes { max-height: 88vh; display: flex; flex-direction: column; }
+.frentes-dica { font-size: 13px; line-height: 1.5; color: #4a5a55; margin: 2px 0 12px; }
+.frentes-lista { overflow-y: auto; -webkit-overflow-scrolling: touch; display: flex; flex-direction: column; gap: 12px; padding: 2px 2px 14px; min-height: 0; }
+.frente { --c: var(--verde); border: 1.5px solid var(--borda); border-radius: 18px; padding: 12px; }
+.frente.azul { --c: var(--azul); } .frente.rosa { --c: var(--rosa); } .frente.roxo { --c: var(--roxo); }
+.frente.preto { --c: #222; } .frente.vermelho { --c: var(--vermelho); }
+.frente.minha { border-color: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 14%, transparent); }
+.frente-topo { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; color: var(--verde-esc); font-size: 15px; }
+.frente-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
+.frente-sua { font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; background: var(--amarelo); color: var(--texto); padding: 3px 8px; border-radius: 999px; }
+.frente-n { margin-left: auto; font-size: 12px; color: #667; white-space: nowrap; }
+.frente-membros { display: flex; flex-wrap: wrap; gap: 6px; }
+.membro { display: inline-flex; align-items: center; gap: 7px; background: #f3f6f5; border-radius: 999px; padding: 3px 11px 3px 3px; font-size: 13.5px; font-weight: 500; color: var(--texto); }
+.membro i { font-style: normal; color: #778; font-weight: 400; }
+.membro.eu { background: #fff8c2; box-shadow: 0 0 0 2px var(--amarelo); font-weight: 700; }
 .card-missao {
   position: relative; overflow: hidden; color: #fff; border-radius: 24px; padding: 24px 22px 22px;
   background: radial-gradient(circle at 100% 0%, #2a8a7a 0, transparent 55%), linear-gradient(160deg, var(--verde), var(--verde-esc));

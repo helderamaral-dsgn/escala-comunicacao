@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Escala da Comunicação · Novembro e Dezembro 2026">
 <meta property="og:description" content="Escala do Departamento de Comunicação da IP Jardim: Novembro e Dezembro 2026. Toque no seu nome para salvar o lembrete na agenda.">
-<meta property="og:image" content="https://comunicacao.ipjardim.com.br/img/capa.png?v=mwv7v7xx">
+<meta property="og:image" content="https://comunicacao.ipjardim.com.br/img/capa.png?v=mwv8bzne">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://comunicacao.ipjardim.com.br/">
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@800&family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="estilo.css?v=mwv7v7xx">
+<link rel="stylesheet" href="estilo.css?v=mwv8bzne">
 </head>
 <body>
 <header class="hero">
@@ -71,12 +71,18 @@
 </main>
 
 <footer class="rodape">
-  <div class="card-troca anima">
-    <div class="troca-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h15"/><path d="m15 4 4 4-4 4"/><path d="M20 16H5"/><path d="m9 12-4 4 4 4"/></svg></div>
-    <div>
-      <strong>Não pode servir no seu dia?</strong>
-      <p>Combine uma troca com alguém da sua frente e avise a liderança. Você é responsável pelo seu dia. 💚</p>
+  <div class="card-troca anima" id="abrir-frentes" role="button" tabindex="0" aria-haspopup="dialog">
+    <div class="troca-topo">
+      <div class="troca-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h15"/><path d="m15 4 4 4-4 4"/><path d="M20 16H5"/><path d="m9 12-4 4 4 4"/></svg></div>
+      <div>
+        <strong>Não pode servir no seu dia?</strong>
+        <p>Combine uma troca com alguém da sua frente e avise a liderança. Você é responsável pelo seu dia. 💚</p>
+      </div>
     </div>
+    <span class="troca-btn">
+      <span class="troca-btn-ic" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8"/><circle cx="17" cy="9" r="2.6"/><path d="M15.8 14.4c2.4-.4 4.3 1.1 4.8 3.8"/></svg></span>
+      <span class="troca-btn-txt">Veja quem é da sua frente</span>
+    </span>
   </div>
   <div class="card-missao anima">
     <img class="missao-logo" src="img/logo.png" alt="">
@@ -98,8 +104,16 @@
   <p class="sheet-obs">No iPhone, o evento já vem com lembrete 1 dia antes e 1 hora antes.</p>
   <button class="sheet-fechar" id="sheet-fechar" type="button">Fechar</button>
 </div>
+<div class="sheet sheet-frentes" id="sheet-frentes" role="dialog" aria-modal="true" aria-labelledby="frentes-titulo" hidden>
+  <div class="sheet-alca"></div>
+  <p class="sheet-quando">Relação de frentes</p>
+  <h3 id="frentes-titulo">Com quem posso trocar?</h3>
+  <p class="frentes-dica">Procure alguém da <b>mesma frente</b> que você, combine a troca e avise a liderança. 🙏</p>
+  <div class="frentes-lista" id="frentes-lista"></div>
+  <button class="sheet-fechar" id="frentes-fechar" type="button">Fechar</button>
+</div>
 
-<script src="dados.js?v=mwv7v7xx"></script>
-<script src="app.js?v=mwv7v7xx"></script>
+<script src="dados.js?v=mwv8bzne"></script>
+<script src="app.js?v=mwv8bzne"></script>
 </body>
 </html>

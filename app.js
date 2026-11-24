@@ -219,8 +219,32 @@
   }
   function fechar() {
     document.body.classList.remove('sheet-aberta');
-    setTimeout(function () { $('fundo-sheet').hidden = true; $('sheet').hidden = true; }, 250);
+    setTimeout(function () { $('fundo-sheet').hidden = true; $('sheet').hidden = true; $('sheet-frentes').hidden = true; }, 250);
   }
+
+  // relação de frentes (card de troca): suas frentes primeiro, você destacado
+  function abrirFrentes() {
+    var F = (E.frentes || []).map(function (f) {
+      var membros = f.membros.map(function (x) { return Array.isArray(x) ? { k: x[0], fn: x[1] } : { k: x }; })
+        .sort(function (a, b) { return nomeCompleto(a.k).localeCompare(nomeCompleto(b.k), 'pt'); });
+      return { nome: f.nome, cor: f.cor, membros: membros, minha: !!nome && membros.some(function (m) { return m.k === nome; }) };
+    });
+    F.sort(function (a, b) { return (b.minha ? 1 : 0) - (a.minha ? 1 : 0); });
+    $('frentes-lista').innerHTML = F.map(function (f) {
+      var n = f.membros.length;
+      return '<section class="frente ' + f.cor + (f.minha ? ' minha' : '') + '"><div class="frente-topo"><span class="frente-dot"></span><b>' + esc(f.nome) + '</b>' +
+        (f.minha ? '<span class="frente-sua">sua frente</span>' : '') + '<span class="frente-n">' + n + (n === 1 ? ' irmão' : ' irmãos') + '</span></div>' +
+        '<div class="frente-membros">' + f.membros.map(function (m) {
+          return '<span class="membro' + (m.k === nome ? ' eu' : '') + '">' + avatar(m.k) + '<span>' + esc(nomeCompleto(m.k)) +
+            (m.fn ? ' <i>· ' + esc(m.fn) + '</i>' : '') + '</span></span>';
+        }).join('') + '</div></section>';
+    }).join('');
+    $('fundo-sheet').hidden = false; $('sheet-frentes').hidden = false; $('frentes-lista').scrollTop = 0;
+    requestAnimationFrame(function () { document.body.classList.add('sheet-aberta'); });
+  }
+  $('abrir-frentes').addEventListener('click', abrirFrentes);
+  $('abrir-frentes').addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); abrirFrentes(); } });
+  $('frentes-fechar').addEventListener('click', fechar);
   $('sheet-fechar').addEventListener('click', fechar);
   $('fundo-sheet').addEventListener('click', fechar);
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
